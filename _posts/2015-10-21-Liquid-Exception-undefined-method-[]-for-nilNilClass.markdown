@@ -18,7 +18,7 @@ It caused by `highlighter`.
 
 You can try modifying `_config.yml`, add `highlighter: true`.
 
-{% highlight yml %}
+{% highlight ruby %}
 # Build settings
 highlighter: true
 {% endhighlight %}
