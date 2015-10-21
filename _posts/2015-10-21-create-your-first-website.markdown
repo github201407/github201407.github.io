@@ -10,16 +10,16 @@ categories: jekyll update
 Repository name: `username.github.io`,Note: where username is your github username
 
 2.Clone the repository
-{% highlight git %}
+{% highlight ruby %}
 git clone https://github.com/username/username.github.io
 {% endhighlight %}
 3.Add an index.html file to project folder
-{% highlight git %}
+{% highlight ruby %}
 cd username.github.io
 echo "Hello World" > index.html
 {% endhighlight %}
 4.Push it
-{% highlight git %}
+{% highlight ruby %}
 git add --all
 git commit -m "Initial commit"
 git push -u origin master
