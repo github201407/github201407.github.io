@@ -50,8 +50,34 @@ categories: jekyll update
     <item android:color="#ff000000"/> <!-- default -->
 </selector>
 {% endhighlight %}
+3.[Show List Dialog][Dialog]
+{% highlight ruby %}
+@Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    builder.setTitle(R.string.pick_color)
+           .setItems(R.array.colors_array, new DialogInterface.OnClickListener() {
+               public void onClick(DialogInterface dialog, int which) {
+               // The 'which' argument contains the index position
+               // of the selected item
+           }
+    });
+    return builder.create();
+}
+//Show Dialog
+mAlertDialog = mBuilder.create();
+    if (!isFinishing())
+        mAlertDialog.show();
 
+@Override
+protected void onPause() {
+    super.onPause();
+    if (mAlertDialog != null && mAlertDialog.isShowing())
+        mAlertDialog.dismiss();
+}   
+{% endhighlight %}
 
+[Dialog]:   http://developer.android.com/guide/topics/ui/dialogs.html
 [Android Open Source Project]: http://source.android.com/index.html
 [Oline View Android Resource]: http://grepcode.com/
 [Material Design Spinner Toolbar Style Fix]: https://dabx.io/2015/01/02/material-design-spinner-toolbar-style-fix/
