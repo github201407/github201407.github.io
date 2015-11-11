@@ -13,6 +13,14 @@ categories: jekyll update
 
 4.[Express][Link6]
 
+5.[React Native For Android初体验][Link7]
+
+6.React Native For Android
+	
+  [Javascript][Javascript]
+	
+  [React][React]
+
 #『程序人生』
 1.[轩枫阁][Link4]
 		
@@ -34,3 +42,6 @@ categories: jekyll update
 [Link4]: http://www.xuanfengge.com/category/code
 [Link5]: http://www.kafeitu.me/categories.html
 [Link6]: http://expressjs.com/zh/
+[Link7]: http://www.jianshu.com/p/847a54e0c385
+[Javascript]: https://www.javascript.com/
+[React]: http://facebook.github.io/react/
