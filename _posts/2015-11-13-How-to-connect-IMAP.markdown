@@ -6,7 +6,6 @@ categories: jekyll update
 ---
 {% highlight ruby %}
 telnet www.example.com 25
-
 LOGIN [username] [password]
 LIST [flags] [folder separator] [search term]
 STATUS [mailbox] [flags]
