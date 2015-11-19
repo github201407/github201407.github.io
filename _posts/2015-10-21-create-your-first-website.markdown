@@ -58,6 +58,13 @@ cd myblog
 jekyll serve
 {% endhighlight %}
 
+[使用Github Pages创建博客](http://sunheran.com/2014/11/11/hihera-github-pages/)
++ 一、准备工作
++ 二、配置和使用Github
++ 三、使用GitHub Pages建立博客
++ 四、Jekyll模板系统
++ 五、使用Disqus管理评论
+  
 [pages]: https://pages.github.com/
 [RubySite]:	http://rubyinstaller.org/downloads/
 
