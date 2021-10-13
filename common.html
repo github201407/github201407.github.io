@@ -119,6 +119,55 @@
       font-size: 18px;
       margin-right: 10px;
     }
+
+    .a {
+      width: 205px;
+    }
+
+    .b {
+      width: 200px;
+      height: 50px;
+      background-color: limegreen;
+      text-align: center;
+      line-height: 50px;
+      color: #ffffff;
+    }
+
+    .c {
+      width: 200px;
+      height: 300px;
+      background-color: gainsboro;
+      display: none;
+    }
+
+    ul {
+      list-style: none;
+      margin-left: -40px;
+    }
+
+    ul li {
+      line-height: 50px;
+      display: block;
+      width: 200px;
+      text-align: center;
+    }
+
+    .a:hover {
+      cursor: pointer;
+    }
+
+    .a:hover .c {
+      display: block;
+    }
+
+    .a:hover .b {
+      background-color: green;
+    }
+
+    li:hover {
+      background-color: gray;
+      color: #FFFFFF;
+    }
   </style>
   <!-- <link rel="shortcut icon" href="你存放图标的路径/1616.ico"/> -->
   <meta charset="utf-8">
@@ -155,6 +204,12 @@
   <div class="contentClass">
     <div class="cities">
       <h2>推送</h2>
+      <!-- <select>
+        <option value="volvo">PHP中文网</option>
+        <option value="saab">百度</option>
+        <option value="opel">腾讯</option>
+        <option value="audi">新浪</option>
+      </select> -->
       <table border="0">
         <tbody>
           <tr>
@@ -345,9 +400,7 @@
             <td> <a href="http://app.mi.com/" target="_blank">小米应用商店</a> </td>
           </tr>
           <tr>
-            <td> <a
-                href="http://zhushou.360.cn"
-                target="_blank">360应用</a> </td>
+            <td> <a href="http://zhushou.360.cn" target="_blank">360应用</a> </td>
           </tr>
           <tr>
             <td> <a href="http://sj.qq.com" target="_blank">QQ应用宝</a> </td>
@@ -447,6 +500,22 @@
   <div class="list">
     <h3><a href="http://github201407.github.io/">MY HOME</a></h3>
     <h3><a href="http://github201407.github.io/markdown/open_source.html">常用开源项目</a></h3>
+
+    <!-- 下拉菜单 -->
+    <div class="a">
+      <div class="b">
+        实用教程整理
+      </div>
+      <div class="c">
+        <ul>
+          <li><a href="https://www.kotlincn.net/docs/reference/collection-filtering.html" target="_blank">Kotlin语言指南</a>
+          </li>
+          <li><a href="https://code.luasoftware.com/tutorials/android/android-get-file-size/"
+              target="_blank">code代码例子</a></li>
+        </ul>
+      </div>
+    </div>
+
     <h5>--- jar包、Android依赖 ---</h5>
     <table border="0" cellspacing="1">
       <tbody>
