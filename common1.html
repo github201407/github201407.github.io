@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常用网站导航</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize/modern-normalize.min.css">
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --background-color: #f8fafc;
+      --text-color: #1e293b;
+      --card-bg: white;
+      --border-radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dark-theme {
+      --background-color: #1a1a1a;
+      --text-color: #e5e7eb;
+      --card-bg: #2d2d2d;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not(.light-theme) {
+        --background-color: #1a1a1a;
+        --text-color: #e5e7eb;
+        --card-bg: #2d2d2d;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      line-height: 1.5;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(200px, 300px) 1fr;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 1rem;
+      height: fit-content;
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .card h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.5rem;
+      width: 50px;
+      height: 3px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card li {
+      margin: 1rem 0;
+    }
+
+    .card a {
+      color: var(--text-color);
+      text-decoration: none;
+      transition: var(--transition);
+      display: block;
+      padding: 0.5rem 0;
+    }
+
+    .card a:hover {
+      color: var(--primary-color);
+      padding-left: 0.5rem;
+    }
+
+    .nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      margin: 0.75rem 0;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      color: var(--text-color);
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      background: rgba(37, 99, 235, 0.05);
+    }
+
+    .nav-link:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 1rem;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover .nav-icon {
+      filter: brightness(0) invert(1);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card-bg);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-color);
+    }
+  </style>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+      document.body.classList.add('dark-theme');
+    } else if (currentTheme === 'light') {
+      document.body.classList.add('light-theme');
+    }
+
+    themeToggle.addEventListener('click', function() {
+      if (document.body.classList.contains('dark-theme')) {
+        document.body.classList.remove('dark-theme');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.body.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  </script>
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+
+  <div class="container">
+    <aside class="sidebar">
+      <h2>快捷导航</h2>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="https://github.com/" class="nav-link" target="_blank">
+            <img src="https://github.com/fluidicon.png" alt="GitHub" class="nav-icon">
+            GitHub
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="http://www.runoob.com/" class="nav-link" target="_blank">
+            <img src="http://static.runoob.com/images/favicon.ico" alt="菜鸟教程" class="nav-icon">
+            菜鸟教程
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="http://www.jianshu.com/" class="nav-link" target="_blank">
+            <img src="http://cdn-qn0.jianshu.io/assets/favicons/favicon-ea87c042cbed82f63ec4cb18d1e1bc8b.ico" alt="简书" class="nav-icon">
+            简书
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section class="card">
+        <h2>开发工具</h2>
+        <ul>
+          <li><a href="https://developer.android.google.cn/index.html" target="_blank">Android开发指南</a></li>
+          <li><a href="https://www.runoob.com/python3/python3-tutorial.html" target="_blank">Python 3 教程</a></li>
+          <li><a href="http://www.runoob.com/java/java-tutorial.html" target="_blank">Java 教程</a></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>在线工具</h2>
+        <ul>
+          <li><a href="http://www.bejson.com/jsonviewernew/" target="_blank">JSON格式化</a></li>
+          <li><a href="https://c.runoob.com/front-end/693" target="_blank">Base64 编码/解码</a></li>
+          <li><a href="https://c.runoob.com/front-end/703" target="_blank">MD5 加密</a></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
